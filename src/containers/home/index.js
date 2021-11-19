@@ -15,7 +15,7 @@ function _renderList(data){
     randomImg = Math.floor(randomImg*100)
     console.log(randomImg)
     return(
-        <TouchableOpacity onPress={() => props.navigation.navigate(`Info`)} >
+        <TouchableOpacity onPress={() => props.navigation.navigate(`Info`, {name:data})} >
             <View style={styles.card}>
                 <Text style={tw`m-2 text-lg font-bold `} numberOfLines={1}>{data}</Text>
                 <Image style={tw`rounded-xl`} source={{width:150,height:150,uri:`https://picsum.photos/id/${randomImg}/200/200`}}></Image>
