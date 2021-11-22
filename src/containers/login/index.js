@@ -16,7 +16,7 @@ function Login(props){
             <TextInput style={styles.inputStyle} placeholder="Password" keyboardType='default' secureTextEntry={true} ></TextInput>
             <TextInput style={styles.inputStyle} placeholder="Number" keyboardType='number-pad' ></TextInput>
 
-            <TouchableOpacity style={tw`rounded-lg bg-blue-400 p-5`} onPress={() => props.navigation.navigate('Home')}>
+            <TouchableOpacity style={tw`rounded-lg bg-blue-400 p-5`} onPress={() => props.navigation.navigate('TabNav')}>
             <Text>Login</Text>
             </TouchableOpacity>
 

@@ -10,11 +10,18 @@ import {
 import tw from 'tailwind-react-native-classnames'
 import { INPUT_STYLE } from '../../assets/styles'
 
-function Register(){
+
+
+function Register(props){
     return(
-        <SafeAreaView style={styles.loginContainer}>
+        <SafeAreaView style={{height:'100%', width:'100%', backgroundColor:'skyblue'}}>
+            <TouchableOpacity style={tw`bg-white rounded-lg p-3 mt-8 ml-2 w-1/4`} onPress={() => props.navigation.navigate('Login')}>
+                <Text style={tw``}>← Back</Text>
+            </TouchableOpacity>
+            <View style={styles.loginContainer}>
+            
             <Text style={tw`text-xl`}>
-                Make new account
+                Make new account test
             </Text>
             <TextInput style={INPUT_STYLE} placeholder="Username"/>
             <TextInput style={styles.inputStyle} placeholder="Password"/>
@@ -23,6 +30,7 @@ function Register(){
             <TouchableOpacity style={tw`border-2 border-blue-300 rounded-lg bg-blue-200 p-5`}>
                 <Text>Register</Text>
             </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }
