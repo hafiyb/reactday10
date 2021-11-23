@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from "react";
 
 import tw from "tailwind-react-native-classnames";
-import { SafeAreaView, Text, View, TouchableOpacity, ScrollView, Image, Touchable, FlatList, TextInput } from "react-native";
+import { SafeAreaView, Text, View, TouchableOpacity, ScrollView, Image, Touchable, FlatList, TextInput, Button } from "react-native";
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { getMovie } from "../../actions";
+ 
+import { sliceGetMovie } from "../../features/auth";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -20,7 +22,7 @@ const DATA = ['Lorem Ipsum','Dolor Sit Amet','Consectetur adipiscing','Elit. Sus
 // const Home = (props) => (dispatch) => {
 const Home = (props) => {
 
-const [movie, setMovieData] = useState({
+const [movieData, setMovieData] = useState({
         movielist: []
     })
 
@@ -67,7 +69,6 @@ function _searchMovie(){
             // console.log(res)
             if(res.status === 200 && res.data.Response == 'True'){
                 // console.log(res.data)
-                // return state = [res.data]
                 setMovieData({ movielist : res.data.Search})
             } else {
                 alert('Search failed')
@@ -87,12 +88,16 @@ function _renderList(data){
 
     return(
             <FlatList
-                data={movie.movielist}
+                data={movieData.movielist}
                 renderItem={({item}) => {
                     return (
                         <TouchableOpacity onPress={() => props.navigation.navigate('Info', {ID : item.imdbID})}>
                             <View style={styles.card} key={item.Title}>
-                                <Image style={tw`rounded-xl`} source={{uri: item.Poster, width:150, height:150}} />
+                                {item.Poster != 'N/A'
+                                ?<Image style={tw`rounded-xl`} source={{uri: item.Poster, width:150, height:150}} />
+                                :<View style={{width:150,height:150,backgroundColor:'rgba(0,0,0,0.5)',borderRadius:15,justifyContent:'center',alignItems:'center'}}><Text style={tw`text-white`}>N/A</Text></View>
+                                }
+                                
                                 <View style={tw`flex flex-col w-1/2`}>
                                     <Text style={tw`m-2 font-bold text-lg w-full`}numberOfLines={2}>{item.Title}</Text>
                                     <Text style={tw`m-2`}numberOfLines={2}>{item.Year}</Text>
@@ -120,8 +125,10 @@ function _renderList(data){
         // horizontal={true}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={tw`flex flex-row flex-wrap justify-center`}>
-        </ScrollView>
         {_renderList()}
+        </ScrollView>
+        
+        {/* <Button onPress={()=>dispatch({type: 'sliceGetMovie'})}></Button> */}
     </SafeAreaView>
 
 

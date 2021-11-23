@@ -1,3 +1,6 @@
 export const INCREASE = 'INCREASE'
 export const DECREASE = 'DECREASE'
 export const GETMOVIE = 'GETMOVIE'
+export const ADDITEM = 'ADDITEM'
+export const DELITEM = 'DELITEM'
+export const RESET = 'RESET'

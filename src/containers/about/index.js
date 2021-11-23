@@ -4,7 +4,7 @@ import tw from "tailwind-react-native-classnames";
 
 const ABOUTDATA =[
     {
-        title : 'Title One',
+        title : 'Title Onetest',
         content : 'This is Content One',
     },
     {

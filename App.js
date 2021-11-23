@@ -19,6 +19,7 @@ import About from './src/containers/about';
 
 import { Provider } from 'react-redux';
 import { store, persistor } from './src/store/configureStore';
+import Cart from './src/containers/cart';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -42,6 +43,10 @@ function TabNav() {
             iconName = focused
             ? 'call'
             : 'call-outline'
+          } else if(route.name == 'Cart'){
+            iconName = focused
+            ? 'call'
+            : 'call-outline'
           }
 
           return (<View style={tw``}><Ionicons name={iconName} size={20} color={color}  /></View>)
@@ -55,6 +60,7 @@ function TabNav() {
         />
       <Tab.Screen name="About" component={About} />
       <Tab.Screen name="Contact" component={Contact} />
+      <Tab.Screen name="Cart" component={Cart} />
     </Tab.Navigator>
   )
 }

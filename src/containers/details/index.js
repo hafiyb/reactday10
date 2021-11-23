@@ -47,9 +47,11 @@ function Details({route,navigation}){
     return(
         <SafeAreaView style={styles.loginContainer}>
             {/* <Image blurRadius={1} style={tw`rounded-xl`} source={{width:200,height:200,uri: `https://picsum.photos/id/${randomImg}/200/200`}}></Image> */}
-            <Image blurRadius={0} style={tw`rounded-xl`} source={{width:300,height:300,uri: movieDetails.details.Poster}}></Image>
-            {console.log(movieDetails)}
-            <Text style={tw`font-bold text-xl m-2 underline`}>{movieDetails.details.Title}</Text>
+            {movieDetails.details.Poster != 'N/A' 
+            ? <Image blurRadius={0} style={tw`rounded-xl`} source={{width:300,height:300,uri: movieDetails.details.Poster}}></Image>
+            : <View style={{backgroundColor:'black',width:300,height:300,justifyContent:'center',alignItems:'center',borderRadius:30}}><Text style={tw`text-white`}>Image Not Available</Text></View>}
+            
+            <Text style={tw`font-bold text-xl m-2 underline text-center`}>{movieDetails.details.Title}</Text>
             <Text style={tw`p-1`}>{movieDetails.details.Director} </Text>
             <Text style={tw`p-1`}>{movieDetails.details.Actors} </Text>
             <Text style={tw`p-1`}>{movieDetails.details.Genre} </Text>
